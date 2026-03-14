@@ -5,7 +5,7 @@ title: "Avengers Endgame",
 genre: "Action / Sci-Fi",
 year: 2019,
 image: "images/movie1.jpg",
-rating: "⭐⭐⭐⭐☆"
+rating: 0
 },
 
 {
@@ -13,7 +13,7 @@ title: "Interstellar",
 genre: "Sci-Fi",
 year: 2014,
 image: "images/movie2.jpg",
-rating: "⭐⭐⭐⭐⭐"
+rating: 0
 },
 
 {
@@ -21,7 +21,7 @@ title: "Joker",
 genre: "Drama",
 year: 2019,
 image: "images/movie3.jpg",
-rating: "⭐⭐⭐⭐☆"
+rating: 0
 }
 
 ];
@@ -34,7 +34,7 @@ function displayMovies(movieList){
 
 movieContainer.innerHTML = "";
 
-movieList.forEach(function(movie){
+movieList.forEach((movie,index)=>{
 
 const movieCard = document.createElement("div");
 
@@ -52,13 +52,58 @@ movieCard.innerHTML = `
 
 <p>Year: ${movie.year}</p>
 
-<div class="rating">${movie.rating}</div>
+<div class="rating" data-index="${index}">
+
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+
+</div>
 
 </div>
 
 `;
 
 movieContainer.appendChild(movieCard);
+
+});
+
+addRatingEvents();
+
+}
+
+
+function addRatingEvents(){
+
+const ratings = document.querySelectorAll(".rating");
+
+ratings.forEach((ratingDiv)=>{
+
+const stars = ratingDiv.querySelectorAll(".star");
+
+stars.forEach((star,starIndex)=>{
+
+star.addEventListener("click",()=>{
+
+stars.forEach((s,i)=>{
+
+if(i<=starIndex){
+
+s.classList.add("active");
+
+}else{
+
+s.classList.remove("active");
+
+}
+
+});
+
+});
+
+});
 
 });
 
@@ -71,15 +116,15 @@ displayMovies(movies);
 
 const searchInput = document.getElementById("search");
 
-searchInput.addEventListener("keyup", function(){
+searchInput.addEventListener("keyup",function(){
 
 const searchValue = searchInput.value.toLowerCase();
 
-const filteredMovies = movies.filter(function(movie){
+const filteredMovies = movies.filter(movie =>
 
-return movie.title.toLowerCase().includes(searchValue);
+movie.title.toLowerCase().includes(searchValue)
 
-});
+);
 
 displayMovies(filteredMovies);
 
