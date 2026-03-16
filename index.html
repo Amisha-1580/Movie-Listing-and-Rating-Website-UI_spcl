@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -19,12 +20,39 @@
 
 <input type="text" id="search" placeholder="Search movies...">
 
+<select id="genreFilter">
+<option value="all">All Genres</option>
+<option value="Action">Action</option>
+<option value="Sci-Fi">Sci-Fi</option>
+<option value="Drama">Drama</option>
+</select>
+
 </header>
 
 
 <section class="movie-container" id="movieContainer">
 
 </section>
+
+
+<div class="modal" id="movieModal">
+
+<div class="modal-content">
+
+<span class="close">&times;</span>
+
+<h2 id="modalTitle"></h2>
+
+<p id="modalGenre"></p>
+
+<p id="modalYear"></p>
+
+<button id="trailerBtn">Watch Trailer</button>
+
+</div>
+
+</div>
+
 
 <script src="script.js"></script>
 
