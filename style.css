@@ -69,6 +69,12 @@ font-size:20px;
 color:gold;
 }
 
+.average{
+margin-top:5px;
+font-size:14px;
+color:#ccc;
+}
+
 .modal{
 display:none;
 position:fixed;
