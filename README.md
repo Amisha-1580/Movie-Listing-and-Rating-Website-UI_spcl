@@ -1,121 +1,70 @@
 # 🎬 Movie Listing and Rating Website UI
 
 ## 📌 Project Overview
-The **Movie Listing and Rating Website UI** is a responsive web application that displays a list of movies 
-with their posters, genres, release years, and an interactive rating system.
+The **Movie Listing and Rating Website UI** is a responsive web application that allows users to browse movies, view details, rate them, and watch trailers.
 
-Users can browse movies, search for specific titles, filter movies by genre, view additional details, and watch trailers.
-The project focuses on **UI/UX design, interactivity, and responsive web development**.
-
-This project is developed as part of an **internship task** to demonstrate front-end development skills using HTML, CSS, and JavaScript.
+This project was developed as part of an internship task to demonstrate skills in **frontend development, UI design, and JavaScript interactivity**.
 
 ---
 
-# 🚀 Features
+## 🚀 Features
 
 ### 🎥 Movie Listing
 - Displays movies in a responsive grid layout
-- Each movie card contains:
-  - Movie poster
-  - Movie title
+- Each movie card includes:
+  - Poster image
+  - Title
   - Genre
   - Release year
-  - Star rating system
 
 ### ⭐ Interactive Rating System
-- Users can click on stars to rate movies
-- Selected stars highlight dynamically
+- Users can rate movies using star icons
+- Ratings are stored and updated dynamically
+
+### 📊 Average Rating
+- Displays average rating for each movie
+- Updates automatically after user ratings
+
+### 💾 Data Persistence
+- Uses **LocalStorage**
+- Ratings remain saved even after page refresh
 
 ### 🔍 Search Functionality
-- Users can search for movies by title
-- Movie list updates dynamically as the user types
+- Search movies by title
+- Real-time filtering
 
 ### 🎛 Genre Filter
-- Users can filter movies by genre
-- Available genres include:
+- Filter movies by genre:
   - Action
   - Sci-Fi
   - Drama
 
-### 📄 Movie Details Popup
-- Clicking the **Details** button opens a modal window
-- Displays additional movie information
+### 📄 Movie Details Modal
+- Click "Details" button to view more info
+- Displays title, genre, and release year
 
 ### ▶ Watch Trailer
-- Each movie has a **Watch Trailer** button
-- Opens the movie trailer in a new tab
+- Opens movie trailer in a new tab
 
 ### 📱 Responsive Design
-- Works smoothly across:
-  - Desktop
+- Works on:
+  - Mobile
   - Tablet
-  - Mobile devices
+  - Desktop
 
 ---
 
-# 🛠 Technologies Used
+## 🛠 Technologies Used
 
-- **HTML5** – Structure of the website  
-- **CSS3** – Styling and responsive layout  
-- **JavaScript (Vanilla JS)** – Interactivity and dynamic functionality  
-- **Git & GitHub** – Version control and project management  
-
----
-
-# 📁 Project Structure
-
-
-## Technologies Used
-
-- HTML5
-- CSS3
-- JavaScript
-- Git & GitHub
+- **HTML5** – Structure
+- **CSS3** – Styling & responsiveness
+- **JavaScript (Vanilla JS)** – Logic & interactivity
+- **LocalStorage** – Data persistence
+- **Git & GitHub** – Version control
 
 ---
 
-## Features Implemented (Day 1)
-
-- Basic project structure created
-- Responsive movie card layout
-- Movie posters displayed
-- Movie title, genre, and release year shown
-- Basic rating display using stars
-- Hover effect on movie cards
-- Responsive grid layout for different screen sizes
-
----
-
-## Features Implemented (Day 2)
-
-- Dynamic movie listing using JavaScript
-- Movies are stored in a JavaScript array
-- Movie cards generated dynamically
-- Search functionality implemented to filter movies by title
-- Improved code structure by separating HTML, CSS, and JavaScript
-- ### Day 3
-- Added interactive star rating system
-
-### Day 4
-- Implemented movie details modal popup
-
-### Day 5
-- Added genre filter and trailer button
-
----
-
-# 🔮 Future Improvements
-
-- Display average movie ratings
-- Add pagination for large movie lists
-- Improve UI animations and styling
-- Integrate Movie API for real movie data
-- Deploy the project using GitHub Pages or Netlify
-
-
----
-
-## Project Structure
+## 📁 Project Structure
 movie-rating-website
 │
 ├── index.html
@@ -130,8 +79,71 @@ movie-rating-website
 └── README.md
 
 
+---
 
-## Author
+## ⚙️ How to Run the Project
 
-Amisha  
-Spcl Training project 
+### 1️⃣ Clone the repository
+git clone https://github.com/Amisha-1580/Movie-Listing-and-Rating-Website-UI_spcl.git
+
+
+### 2️⃣ Open the folder
+
+### 3️⃣ Run the project
+Open **index.html** in your browser
+
+---
+
+## 🔗 Live Demo
+(Add your deployed link here after GitHub Pages or Netlify)
+
+Example:
+
+
+
+
+---
+
+## 📅 Development Timeline
+
+### Day 1
+- Project setup and basic UI
+
+### Day 2
+- Dynamic movie rendering using JavaScript
+
+### Day 3
+- Interactive star rating system
+
+### Day 4
+- Movie details modal popup
+
+### Day 5
+- Genre filter and trailer feature
+
+### Day 6
+- Average rating and LocalStorage integration
+
+### Day 7–10
+- Final UI improvements, testing, and project completion
+
+---
+
+## 🔮 Future Improvements
+
+- Add more movies
+- Integrate real movie API (TMDB / OMDB)
+- Add pagination
+- Improve animations and UI design
+
+---
+
+## 👩‍💻 Author
+
+**Amisha**  
+Frontend Development SPCL Taining Project
+
+---
+
+## ⭐ Acknowledgment
+This project was created as part of an internship assignment to practice and demonstrate frontend development skills.
