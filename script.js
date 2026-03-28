@@ -1,5 +1,4 @@
 let movies = [
-
 {
 title:"Avengers Endgame",
 genre:"Action",
@@ -8,7 +7,6 @@ image:"images/movie1.jpg",
 trailer:"https://www.youtube.com/watch?v=TcMBFSGVi1c",
 ratings:[]
 },
-
 {
 title:"Interstellar",
 genre:"Sci-Fi",
@@ -17,7 +15,6 @@ image:"images/movie2.jpg",
 trailer:"https://www.youtube.com/watch?v=zSWdZVtXT7E",
 ratings:[]
 },
-
 {
 title:"Joker",
 genre:"Drama",
@@ -26,96 +23,75 @@ image:"images/movie3.jpg",
 trailer:"https://www.youtube.com/watch?v=zAGVQLHvwOY",
 ratings:[]
 }
-
 ];
 
-
-// Load ratings from localStorage
-if(localStorage.getItem("movieRatings")){
-movies = JSON.parse(localStorage.getItem("movieRatings"));
+// Load saved data
+if(localStorage.getItem("moviesData")){
+movies = JSON.parse(localStorage.getItem("moviesData"));
 }
 
+const container = document.getElementById("movieContainer");
 
-const movieContainer = document.getElementById("movieContainer");
+// Display movies
+function displayMovies(list){
+container.innerHTML="";
 
+list.forEach((movie,index)=>{
 
-function displayMovies(movieList){
+const avg = getAverage(movie.ratings);
 
-movieContainer.innerHTML="";
+const card = document.createElement("div");
+card.classList.add("movie-card");
 
-movieList.forEach((movie,index)=>{
-
-const avgRating = calculateAverage(movie.ratings);
-
-const movieCard = document.createElement("div");
-
-movieCard.classList.add("movie-card");
-
-movieCard.innerHTML=`
-
+card.innerHTML = `
 <img src="${movie.image}">
 
 <div class="movie-info">
-
 <h3>${movie.title}</h3>
-<p>Genre: ${movie.genre}</p>
-<p>Year: ${movie.year}</p>
+<p>${movie.genre}</p>
+<p>${movie.year}</p>
 
 <div class="rating" data-index="${index}">
-
-<span class="star">★</span>
-<span class="star">★</span>
-<span class="star">★</span>
-<span class="star">★</span>
-<span class="star">★</span>
-
+${generateStars()}
 </div>
 
-<div class="average">Average: ${avgRating}</div>
+<div class="average">⭐ ${avg}</div>
 
 <button onclick="openModal(${index})">Details</button>
-
 </div>
-
 `;
 
-movieContainer.appendChild(movieCard);
+container.appendChild(card);
 
 });
 
 addRatingEvents();
-
 }
 
-
-function calculateAverage(ratings){
-
-if(ratings.length === 0) return "No ratings";
-
-const sum = ratings.reduce((a,b)=>a+b,0);
-return (sum/ratings.length).toFixed(1);
-
+// Create stars
+function generateStars(){
+let stars="";
+for(let i=0;i<5;i++){
+stars += `<span class="star">★</span>`;
+}
+return stars;
 }
 
-
+// Rating logic
 function addRatingEvents(){
 
-const ratings = document.querySelectorAll(".rating");
-
-ratings.forEach((ratingDiv)=>{
+document.querySelectorAll(".rating").forEach(ratingDiv=>{
 
 const index = ratingDiv.getAttribute("data-index");
-
 const stars = ratingDiv.querySelectorAll(".star");
 
-stars.forEach((star,starIndex)=>{
+stars.forEach((star,i)=>{
 
 star.addEventListener("click",()=>{
 
-movies[index].ratings.push(starIndex+1);
+movies[index].ratings.push(i+1);
 
-// Save to localStorage
-localStorage.setItem("movieRatings", JSON.stringify(movies));
+localStorage.setItem("moviesData",JSON.stringify(movies));
 
 displayMovies(movies);
 
@@ -124,72 +100,60 @@ displayMovies(movies);
 });
 
 });
-
 }
 
-
-displayMovies(movies);
-
+// Average
+function getAverage(arr){
+if(arr.length===0) return "No ratings";
+let sum = arr.reduce((a,b)=>a+b,0);
+return (sum/arr.length).toFixed(1);
+}
 
 // Search
 document.getElementById("search").addEventListener("keyup",(e)=>{
+let val = e.target.value.toLowerCase();
 
-const value = e.target.value.toLowerCase();
-
-const filtered = movies.filter(movie =>
-movie.title.toLowerCase().includes(value)
+let filtered = movies.filter(m =>
+m.title.toLowerCase().includes(val)
 );
 
 displayMovies(filtered);
-
 });
-
 
 // Filter
 document.getElementById("genreFilter").addEventListener("change",(e)=>{
+let val = e.target.value;
 
-const genre = e.target.value;
-
-if(genre==="all"){
+if(val==="all"){
 displayMovies(movies);
 }else{
-const filtered = movies.filter(movie => movie.genre === genre);
-displayMovies(filtered);
+displayMovies(movies.filter(m=>m.genre===val));
 }
-
 });
 
-
 // Modal
-const modal = document.getElementById("movieModal");
-const modalTitle = document.getElementById("modalTitle");
-const modalGenre = document.getElementById("modalGenre");
-const modalYear = document.getElementById("modalYear");
-const trailerBtn = document.getElementById("trailerBtn");
-const close = document.querySelector(".close");
+const modal = document.getElementById("modal");
 
-
-function openModal(index){
-
+function openModal(i){
 modal.style.display="flex";
 
-modalTitle.innerText = movies[index].title;
-modalGenre.innerText = "Genre: "+movies[index].genre;
-modalYear.innerText = "Year: "+movies[index].year;
+document.getElementById("modalTitle").innerText = movies[i].title;
+document.getElementById("modalGenre").innerText = "Genre: "+movies[i].genre;
+document.getElementById("modalYear").innerText = "Year: "+movies[i].year;
 
-trailerBtn.onclick = ()=>{
-window.open(movies[index].trailer);
+document.getElementById("trailerBtn").onclick = ()=>{
+window.open(movies[i].trailer);
 };
-
 }
 
-
-close.onclick = ()=>{
+document.querySelector(".close").onclick = ()=>{
 modal.style.display="none";
 };
 
 window.onclick = (e)=>{
-if(e.target === modal){
+if(e.target===modal){
 modal.style.display="none";
 }
 };
+
+displayMovies(movies);
