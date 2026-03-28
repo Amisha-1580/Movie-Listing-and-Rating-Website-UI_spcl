@@ -97,7 +97,7 @@ Open **index.html** in your browser
 ## 🔗 Live Demo
 (Add your deployed link here after GitHub Pages or Netlify)
 
-Example:
+https://amisha-1580.github.io/Movie-Listing-and-Rating-Website-UI_spcl/
 
 
 
